@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWEEP or TREAT</title>
+    <title>SHOVEL or TREAT!</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="font/stylesheet.css" />
     <script src="js/jquery-3.7.1.min.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
@@ -13,10 +14,19 @@
         <h1>SHOVEL or TREAT!</h1>
     </header>
     <main>
+        <p class="description">Let&#0039s shovel some snow! But be careful… 👀<br>
+            Ten mischievous cats are hiding under the snow, ready to surprise you!<br>
+            Clear the snow without uncovering a cat.<br>
+            If you think a cat is hiding somewhere, gently place their favorite candy there! 🍬🐾
+        </p>
         <div class="board"></div>
         <div class="food-container"></div>
-        <div>
+        <div class="result"></div>
+        <div class="button-section">
             <button>Retry</button>
+        </div>
+        <div class="scoreboard">
+            Wins: <span class="win-count">0</span> | Losses: <span class="lose-count">0</span>
         </div>
     </main>
 </body>

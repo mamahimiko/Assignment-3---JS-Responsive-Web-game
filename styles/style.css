@@ -1,41 +1,195 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background: #f6f7f9;
+}
+
+main {
+  display: flex;
+	justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+	margin-top: 30px;
+	text-align: center;
+	font-family: "SNOWFLAKE DECORATIVE","Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 .board {
-    width: 300px;
-    height: 300px;
-    align-items: center;
-    margin: 30px;
-
+  width: 350px;
+  height: 350px;
+  align-items: center;
+  margin: 0 30px;
+	padding-left: 5px ;
+	padding-top: 5px ;
+  background-color: linear-gradient(#eaf3ff, #dbe8f5);
+  box-shadow: inset 0 4px 10px rgba(255,255,255,0.6),
+              0 12px 30px rgba(0,0,0,0.15);
+  border-radius: 18px;
 }
 
-
 .board-cell {
-    background-color: red;
-    width: 30px;
-    height: 30px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    color: black;
-    float: left;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(#ffffff, #e6eef7);
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1),
+              inset 0 2px 2px rgba(255,255,255,0.8);
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.revealed {
+  background: linear-gradient(#e6dccf, #d2c6b8);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  transform: translateY(1px);
+  font-size: 16px;
+  color: #5a4a3f;
+}
+
+.board-cell:active {
+  transform: scale(0.95);
+}
+
+.food-container {
+	display: flex;
+	justify-content: center;
+}
+
+.food-container {
+  display: flex;
+  gap: 10px;
+	margin: 10px;
+  padding: 10px;
+
 }
 
 .food-box {
-    background-color: red;
-    width: 60px;
-    height: 60px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    color: black;
-    float: left;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
 
+.food-box:hover {
+  transform: translateY(-2px);
+}
+
+.food-box.active {
+  box-shadow: 0 0 0 3px #ff7676;
+}
+
+.food-box.used {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.button-section {
+  margin-top: 10px;
+}
+
+button {
+  background: #ff7676;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255, 118, 118, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.board-cell.win {
+  animation: pop 0.4s ease-in-out infinite alternate;
+	background: linear-gradient(#f68fee, #f5acfb);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.board-cell.lose {
+  animation: shake 0.4s ease-in-out infinite ;
+  background: linear-gradient(#ffe6e6, #ffbdbd);
+}
+
+@keyframes shake {
+  0%   { transform: translate(0, 0) rotate(0); }
+  20%  { transform: translate(-2px, 0) rotate(-2deg); }
+  40%  { transform: translate(2px, 0) rotate(2deg); }
+  60%  { transform: translate(-2px, 0) rotate(-2deg); }
+  80%  { transform: translate(2px, 0) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+.result {
+  font-size: 24px;
+  font-weight: bold;
+	text-align: center;
+  margin-top: 12px;
+  color: #ff7676;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.message {
+  color: #3a4a5a;
+	font-size: 14px;
+}
+
+.result.show {
+  opacity: 1;
+  transform: translateY(0);
+} 
+
+.description {
+  max-width: 420px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3a4a5a;
+  text-align: center;
+}
+
+.scoreboard {
+	padding: 10px;
+}
+
+
+@media (max-width: 480px) {
+  .food-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
 }
